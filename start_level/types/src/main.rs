@@ -1,15 +1,27 @@
+mod client;
+
+use crate::{calc::sum, client::Cliente};
+
 fn main() {
     let ar: [i32; 10] = [1; 10];
     println!("Arrays : {:#?}", ar);
+
+    let idade = sum(1990, 5) as u16;
+
+    let cliente = Cliente::new(String::from("Paulo"), idade, String::from("Onde?"));
+    println!("Cliente Nome -> {}", cliente.nome);
+    println!("Cliente idade -> {}", cliente.ano_de_nascimento);
 }
 
-fn sum(a: i32, b: i32) -> i32 {
-    a + b
+mod calc {
+    pub fn sum(a: u64, b: u64) -> u64 {
+        a + b
+    }
 }
 
 #[cfg(test)]
 mod test_sum {
-    use super::*;
+    use crate::calc::sum;
 
     #[test]
     fn sum_test() {
