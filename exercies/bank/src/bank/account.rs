@@ -37,7 +37,7 @@ impl Account {
         true
     }
 
-    pub fn transfer_to_account(&mut self, account: Account, value: f64) {
+    pub fn transfer_to_account(&mut self, account: &mut Account, value: f64) {
         if value > self.balance {
             print!(
                 "Cannot has total valui in balance to done transfer. out {}",
@@ -45,6 +45,8 @@ impl Account {
             );
             return;
         }
+        self.withdraw(value);
+        account.deposit(value);
     }
 }
 
@@ -85,16 +87,13 @@ mod tests_for_account {
         acc.deposit(-10.00);
         assert_eq!(acc.balance, BALANCE);
     }
-}
 
-#[cfg(test)]
-mod testes {
     #[test]
-    fn array_iteration() {
-        let arr: [u8; 3] = [3, 2, 1];
-        let mut iterator = arr.iter();
-        assert!(iterator.next().unwrap() == &3);
-        assert!(iterator.next().unwrap() == &2);
-        assert!(iterator.next().unwrap() == &1);
+    fn shold_possible_transfer_betwaeen_accounts() {
+        let mut acc_1 = sut();
+        let mut acc_2 = sut();
+        acc_1.transfer_to_account(&mut acc_2, 58.0);
+        assert_eq!(acc_1.balance, 42.0);
+        assert_eq!(acc_2.balance, 158.0);
     }
 }
