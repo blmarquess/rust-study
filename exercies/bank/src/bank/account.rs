@@ -22,6 +22,10 @@ pub struct Transaction {
 
 impl Transaction {
     pub fn new(ammount: f64, transaction_type: TransactionType) -> Transaction {
+        if ammount <= 0.0 {
+            panic!("Cannot possible to create an account with a negative or zero balance");
+        }
+
         Transaction {
             ammount,
             date: Local::now().format("%Y-%m-%d %H:%M:%S").to_string(),
