@@ -40,10 +40,11 @@ pub struct Account {
     pub account_type: AccountType,
     pub balance: f64,
     pub transaction_history: Vec<Transaction>,
+    password: String,
 }
 
 impl Account {
-    pub fn new(name: String, balance: f64, a_type: AccountType) -> Account {
+    pub fn new(name: String, balance: f64, a_type: AccountType, password: String) -> Account {
         let transaction = Transaction::new(balance, TransactionType::Deposit);
         let mut transaction_history: Vec<Transaction> = Vec::new();
         transaction_history.push(transaction);
@@ -52,6 +53,7 @@ impl Account {
             balance,
             account_type: a_type,
             transaction_history,
+            password,
         }
     }
 
@@ -99,9 +101,10 @@ mod tests_for_account {
     const NAME: &str = "Marcio";
     const BALANCE: f64 = 100.0;
     const A_TYPE: super::AccountType = super::AccountType::Checking;
+    const PASSWORD: &str = "123456";
 
     fn sut() -> super::Account {
-        super::Account::new(NAME.to_string(), BALANCE, A_TYPE)
+        super::Account::new(NAME.to_string(), BALANCE, A_TYPE, PASSWORD.to_string())
     }
 
     #[test]
@@ -197,5 +200,11 @@ mod tests_for_account {
             acc.transaction_history[3].transaction_type,
             super::TransactionType::Deposit
         );
+    }
+
+    #[test]
+    fn validy_password() {
+        let mut acc = sut();
+        assert_eq!(acc.password, PASSWORD);
     }
 }
