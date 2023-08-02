@@ -1,5 +1,7 @@
 use uuid::Uuid;
 
+use super::account::{Account, AccountType, Transaction};
+
 pub enum operation {
     Deposit,
     Withdraw,
@@ -15,7 +17,7 @@ pub struct AutomatedTellerMachine {
     pub transaction_history: Vec<Transaction>,
 }
 
-pub impl AutomatedTellerMachine {
+impl AutomatedTellerMachine {
     pub fn new() -> AutomatedTellerMachine {
         AutomatedTellerMachine {
             terminal_id: Uuid::new_v4().to_string(),
@@ -24,8 +26,14 @@ pub impl AutomatedTellerMachine {
         }
     }
 
-    pub fn create_account(&mut self, name: String, balance: f64, account_type: AccountType) -> bool {
-        let account = Account::new(name, balance, account_type);
+    pub fn create_account(
+        &mut self,
+        name: String,
+        balance: f64,
+        account_type: AccountType,
+        password: String,
+    ) -> bool {
+        let account = Account::new(name, balance, account_type, password);
         self.accounts.push(account);
         true
     }
@@ -33,7 +41,7 @@ pub impl AutomatedTellerMachine {
 
 #[cfg(test)]
 mod atm_tests {
-    sut() -> super::AutomatedTellerMachine {
+    fn sut() -> super::AutomatedTellerMachine {
         super::AutomatedTellerMachine::new()
     }
 }
