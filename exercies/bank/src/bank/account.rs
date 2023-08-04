@@ -1,19 +1,19 @@
 use chrono::Local;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum AccountType {
     Checking,
     Savings,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum TransactionType {
     Deposit,
     Withdraw,
     Transfer,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Transaction {
     ammount: f64,
     date: String,
@@ -34,7 +34,7 @@ impl Transaction {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Account {
     pub name: String,
     pub account_type: AccountType,
@@ -93,6 +93,10 @@ impl Account {
         self.withdraw(amount);
         self.add_transaction(amount, TransactionType::Transfer);
         account.deposit(amount);
+    }
+
+    pub fn validty_password(&self, password: &str) -> bool {
+        self.password == password
     }
 }
 
