@@ -15,6 +15,7 @@ pub struct AutomatedTellerMachine {
     pub terminal_id: String,
     pub accounts: Vec<Account>,
     pub transaction_history: Vec<Transaction>,
+    pub stage_account: Option<Account>,
 }
 
 impl AutomatedTellerMachine {
@@ -23,6 +24,7 @@ impl AutomatedTellerMachine {
             terminal_id: Uuid::new_v4().to_string(),
             accounts: Vec::new(),
             transaction_history: Vec::new(),
+            stage_account: None,
         }
     }
 
@@ -36,6 +38,20 @@ impl AutomatedTellerMachine {
         let account = Account::new(name, balance, account_type, password);
         self.accounts.push(account);
         true
+    }
+
+    pub fn start_session(&mut self, account_name: String, password: String) -> bool {
+        let account: Option<&Account> = self.accounts.iter().find(|account: &&Account| {
+            account.name == account_name && account.validty_password(&password)
+        });
+
+        match account {
+            Some(account) => {
+                self.stage_account = Some(account.clone());
+                true
+            }
+            None => false,
+        }
     }
 }
 
