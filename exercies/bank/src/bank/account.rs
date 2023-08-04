@@ -211,4 +211,16 @@ mod tests_for_account {
         let mut acc = sut();
         assert_eq!(acc.password, PASSWORD);
     }
+
+    #[test]
+    fn validy_password_with_correct_password() {
+        let mut acc = sut();
+        assert_eq!(acc.validty_password(PASSWORD), true);
+    }
+
+    #[test]
+    fn validy_password_with_incorrect_password() {
+        let mut acc = sut();
+        assert_eq!(acc.validty_password("1234567"), false);
+    }
 }
