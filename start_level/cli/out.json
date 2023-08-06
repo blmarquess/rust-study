@@ -1,0 +1,114 @@
+{
+  "blockdevices": [
+    {
+      "name": "loop0",
+      "size": "4K",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/bare/5"
+    },
+    {
+      "name": "loop2",
+      "size": "157M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/brave/254"
+    },
+    {
+      "name": "loop3",
+      "size": "154,9M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/brave/257"
+    },
+    {
+      "name": "loop4",
+      "size": "73,9M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/core22/817"
+    },
+    {
+      "name": "loop5",
+      "size": "466,5M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/gnome-42-2204/111"
+    },
+    {
+      "name": "loop6",
+      "size": "485,5M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/gnome-42-2204/120"
+    },
+    {
+      "name": "loop7",
+      "size": "91,7M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/gtk-common-themes/1535"
+    },
+    {
+      "name": "loop8",
+      "size": "53,3M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/snapd/19361"
+    },
+    {
+      "name": "loop9",
+      "size": "53,3M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/snapd/19457"
+    },
+    {
+      "name": "loop10",
+      "size": "73,9M",
+      "type": "loop",
+      "mountpoint": "/var/lib/snapd/snap/core22/858"
+    },
+    {
+      "name": "zram0",
+      "size": "8G",
+      "type": "disk",
+      "mountpoint": "[SWAP]"
+    },
+    {
+      "name": "nvme0n1",
+      "size": "931,5G",
+      "type": "disk",
+      "mountpoint": null,
+      "children": [
+        {
+          "name": "nvme0n1p1",
+          "size": "200M",
+          "type": "part",
+          "mountpoint": null
+        },
+        {
+          "name": "nvme0n1p2",
+          "size": "597,7G",
+          "type": "part",
+          "mountpoint": null
+        },
+        {
+          "name": "nvme0n1p3",
+          "size": "1G",
+          "type": "part",
+          "mountpoint": "/boot/efi"
+        },
+        {
+          "name": "nvme0n1p4",
+          "size": "1G",
+          "type": "part",
+          "mountpoint": "/boot"
+        },
+        {
+          "name": "nvme0n1p5",
+          "size": "331,6G",
+          "type": "part",
+          "mountpoint": "/"
+        }
+      ]
+    }
+  ]
+}
+{
+  "mountpoint": "/var/lib/snapd/snap/bare/5",
+  "name": "loop0",
+  "size": "4K",
+  "type": "loop"
+}
