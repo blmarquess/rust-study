@@ -1,0 +1,9 @@
+[package]
+name = "loops"
+version = "0.1.0"
+edition = "2021"
+authors = ["Bruno Marques <blmarques.dev@gmail.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
