@@ -4,6 +4,15 @@ fn main() {
         "os seguintes números são primos de 0 até 100, \n {:?}",
         collection_prime
     );
+
+    let text_bytes = b"hello world";
+    println!("text_bytes: {:?}", text_bytes);
+    let text_str = std::str::from_utf8(text_bytes).unwrap();
+    println!("text_str: {:?}", text_str);
+
+    for (i, item) in text_bytes.iter().enumerate() {
+        println!("item: {:?} - i: {:?}", item, i);
+    }
 }
 
 fn is_prime(num: i64) -> bool {
