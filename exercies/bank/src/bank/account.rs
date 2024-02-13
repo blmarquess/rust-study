@@ -15,19 +15,19 @@ pub enum TransactionType {
 
 #[derive(Debug, Clone)]
 pub struct Transaction {
-    ammount: f64,
+    amount: f64,
     date: String,
     transaction_type: TransactionType,
 }
 
 impl Transaction {
-    pub fn new(ammount: f64, transaction_type: TransactionType) -> Transaction {
-        if ammount <= 0.0 {
+    pub fn new(amount: f64, transaction_type: TransactionType) -> Transaction {
+        if amount <= 0.0 {
             panic!("Cannot possible to create an account with a negative or zero balance");
         }
 
         Transaction {
-            ammount,
+            amount,
             date: Local::now().format("%Y-%m-%d %H:%M:%S").to_string(),
             transaction_type,
         }
@@ -181,9 +181,9 @@ mod tests_for_account {
         acc.deposit(100.0);
         acc.withdraw(50.0);
         acc.deposit(50.0);
-        assert_eq!(acc.transaction_history[1].ammount, 100.0);
-        assert_eq!(acc.transaction_history[2].ammount, 50.0);
-        assert_eq!(acc.transaction_history[3].ammount, 50.0);
+        assert_eq!(acc.transaction_history[1].amount, 100.0);
+        assert_eq!(acc.transaction_history[2].amount, 50.0);
+        assert_eq!(acc.transaction_history[3].amount, 50.0);
     }
 
     #[test]
